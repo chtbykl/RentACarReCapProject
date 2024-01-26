@@ -1,0 +1,46 @@
+﻿using DataAccess.Abstract;
+using Entities.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataAccess.Concrete.InMemory
+{
+    public class InMemoryColorDal : IColorDal
+    {
+        List<Color> _colors;
+        public InMemoryColorDal()
+        {
+            _colors = new List<Color>()
+            {
+                new Color{Id = 1 , Name = "Blue", ColorCode = "#0a32ff"},
+                new Color{Id = 2 , Name = "Red", ColorCode = "#ff0a0a"},
+                new Color{Id = 3 , Name = "Green", ColorCode = "#2aff0a"},
+                new Color{Id = 4 , Name = "Yellow", ColorCode = "#ffee0a"},
+                new Color{Id = 5 , Name = "White", ColorCode = "#ffffff"},
+                new Color{Id = 6 , Name = "Black", ColorCode = "#000000"},
+            };
+        }
+        public void Add(Color entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Color entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Color> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Color entity)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
