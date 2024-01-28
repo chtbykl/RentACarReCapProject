@@ -1,0 +1,17 @@
+﻿using Entities.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Business.Abstract
+{
+    public interface IFuelTypeService
+    {
+        List<FuelType> GetAll();
+        void Add(FuelType entity);
+        void Update(FuelType entity);
+        void Delete(FuelType entity);
+    }
+}
