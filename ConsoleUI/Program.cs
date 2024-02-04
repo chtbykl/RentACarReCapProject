@@ -20,9 +20,9 @@ namespace ConsoleUI
             //carManager.Delete(car2);
             //carManager.Update(car3);
 
-            foreach (var item in carManager.GetVehicleDetails())
+            foreach (var item in carManager.GetVehicleDetails().Data)
             {
-                Console.WriteLine(item.BrandName + "," + item.VehicleId);
+                Console.WriteLine(item.VehicleId + ","+item.BrandName + "," + item.ModelName+","+item.VehicleTypeName);
             }
 
         }
