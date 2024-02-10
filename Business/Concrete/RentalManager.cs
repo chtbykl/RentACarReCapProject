@@ -30,9 +30,6 @@ namespace Business.Concrete
 
             }
 
-
-
-
             _rentalDal.Add(entity);
             return new SuccessResult("yeni kiralanmış araç eklendi");
 
