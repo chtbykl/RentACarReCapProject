@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace Business.Abstract
 {
     public interface IFuelTypeService
     {
-        List<FuelType> GetAll();
-        void Add(FuelType entity);
-        void Update(FuelType entity);
-        void Delete(FuelType entity);
+        IDataResult<List<FuelType>> GetAll();
+        IResult Add(FuelType entity);
+        IResult Update(FuelType entity);
+        IResult Delete(FuelType entity);
     }
 }

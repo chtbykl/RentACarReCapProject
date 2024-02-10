@@ -14,17 +14,53 @@ namespace ConsoleUI
             //Car car1, car2, car3;
             //Deneme1(out car1, out car2, out car3);
 
-            CarManager carManager = new CarManager(new EfCarDal());
-
             //carManager.Add(car1);
             //carManager.Delete(car2);
             //carManager.Update(car3);
 
-            foreach (var item in carManager.GetVehicleDetails().Data)
+            //Test1();
+
+            //test2();
+
+
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            //Console.WriteLine( rentalManager.Add(
+            //    new Rental 
+            //    {
+            //        CarId = 7, 
+            //        CustomerId = 1, 
+            //        RentDate = DateTime.Now, 
+            //        ReturnDate = null 
+            //    }).Message);
+
+           
+            foreach (var item in rentalManager.GetAll().Data)
             {
-                Console.WriteLine(item.VehicleId + ","+item.BrandName + "," + item.ModelName+","+item.VehicleTypeName);
+                Console.WriteLine(item.CarId + "|| "+item.RentDate + "|| " + item.ReturnDate);
             }
 
+        }
+
+        private static void test2()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.FirstName + ", " + user.LastName);
+            }
+            Console.WriteLine(userManager.GetAll().Message);
+        }
+
+        private static void Test1()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var item in carManager.GetVehicleDetails().Data)
+            {
+                Console.WriteLine(item.VehicleId + "," + item.BrandName + "," + item.ModelName + "," + item.VehicleTypeName);
+            }
+            Console.WriteLine(carManager.GetVehicleDetails().Message);
         }
 
         private static void Deneme1(out Car car1, out Car car2, out Car car3)
