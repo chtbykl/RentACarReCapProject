@@ -20,10 +20,19 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (Context context = new Context())
             {
-                var result = from cars in context.Cars
+                var ModelDetails= from models in context.Models
+                                   join brands in context.Brands
+                                   on models.BrandId equals brands.BrandId
 
-                             join brands in context.Brands
-                             on cars.BrandId equals brands.BrandId
+                                   select new ModelDetailDto
+                                   {
+                                       ModelId = models.ModelId,
+                                       ModelName = models.Name,
+                                       BrandName = brands.Name
+                                   };
+                                   
+
+                var CarsDetails = from cars in context.Cars
 
                              join colors in context.Colors
                              on cars.ColorId equals colors.ColorId
@@ -31,28 +40,30 @@ namespace DataAccess.Concrete.EntityFramework
                              join fuelTypes in context.FuelTypes
                              on cars.FuelTypeId equals fuelTypes.FuelTypeId
 
-                             join models in context.Models
+                             join models in ModelDetails
                              on cars.ModelId equals models.ModelId
 
                              join vehicleTypes in context.VehicleTypes
                              on cars.VehicleTypeId equals vehicleTypes.VehicleTypeId
 
+                             
+
                              select new VehicleDetailDto
                              {
                                  VehicleId = cars.Id,
-                                 BrandName = brands.Name,
+                                 BrandName = models.BrandName,
                                  ColorCode = colors.ColorCode,
                                  ColorName = colors.Name,
                                  DailyPrice = cars.DailyPrice,
                                  Description = cars.Description,
                                  FuelTypeName = fuelTypes.Name,
-                                 ModelName = models.Name,
+                                 ModelName = models.ModelName,
                                  ModelYear = cars.ModelYear,
                                  VehicleTypeName = vehicleTypes.Name
 
                              };
-
-                return result.ToList();
+                
+                return CarsDetails.ToList();
             }
 
         }
