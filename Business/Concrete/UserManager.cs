@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -17,12 +19,15 @@ namespace Business.Concrete
         {
             _userDal = userDal;
         }
+
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User entity)
         {
             _userDal.Add(entity);
             return new SuccessResult("kullanıcı eklendi");
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Delete(User entity)
         {
             _userDal.Delete(entity);
@@ -34,6 +39,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll(),"kullanıcılar listelendi");
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Update(User entity)
         {
             _userDal.Update(entity);

@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -19,6 +21,7 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental entity)
         {
             if (_rentalDal.Get(r => r.CarId == entity.CarId) != null)
@@ -35,6 +38,7 @@ namespace Business.Concrete
 
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Delete(Rental entity)
         {
             _rentalDal.Delete(entity);
@@ -46,6 +50,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), "kiralanmış araçlar listelendi");
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental entity)
         {
             _rentalDal.Update(entity);

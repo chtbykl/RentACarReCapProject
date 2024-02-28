@@ -29,17 +29,20 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ColorAdded);
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Delete(Color entity)
         {
             _colorDal.Delete(entity);
             return new SuccessResult(Messages.ColorDeleted);
         }
 
+        
         public IDataResult<List<Color>> GetAll()
         {
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.ColorsListed);
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color entity)
         {
             _colorDal.Update(entity);

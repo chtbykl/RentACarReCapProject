@@ -33,6 +33,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.BrandAdded);
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Delete(Brand entity)
         {
             return new SuccessResult(Messages.BrandDeleted);
@@ -43,6 +44,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand entity)
         {
             return new SuccessResult(Messages.BrandUpdated);

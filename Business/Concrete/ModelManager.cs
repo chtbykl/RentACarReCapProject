@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,12 +22,14 @@ namespace Business.Concrete
             _modelDal = modelDal;
         }
 
+        [ValidationAspect(typeof(ModelValidator))]
         public IResult Add(Model entity)
         {
             _modelDal.Add(entity);
             return new SuccessResult(Messages.ModelAdded);
         }
 
+        [ValidationAspect(typeof(ModelValidator))]
         public IResult Delete(Model entity)
         {
             _modelDal?.Delete(entity);
@@ -37,6 +41,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Model>>(_modelDal.GetAll(),Messages.CustomersListed);
         }
 
+        [ValidationAspect(typeof(ModelValidator))]
         public IResult Update(Model entity)
         {
             _modelDal.Update(entity);

@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,12 +22,14 @@ namespace Business.Concrete
             _vehicleTypeDal = vehicleTypeDal;
         }
 
+        [ValidationAspect(typeof(VehicleTypeValidator))]
         public IResult Add(VehicleType entity)
         {
             _vehicleTypeDal.Add(entity);
             return new SuccessResult(Messages.VehicleTypeAdded);
         }
 
+        [ValidationAspect(typeof(VehicleTypeValidator))]
         public IResult Delete(VehicleType entity)
         {
             _vehicleTypeDal.Delete(entity);
@@ -37,6 +41,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<VehicleType>>(_vehicleTypeDal.GetAll(),Messages.VehicleTypesListed);
         }
 
+        [ValidationAspect(typeof(VehicleTypeValidator))]
         public IResult Update(VehicleType entity)
         {
             _vehicleTypeDal.Update(entity);
