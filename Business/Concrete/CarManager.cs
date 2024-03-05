@@ -2,8 +2,10 @@
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -16,15 +18,20 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        private ICarDal _carDal;
+        private readonly ICarDal _carDal;
+        
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
+            
         }
 
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car entity)
         {
+            var businessRule = BusinessRules.Run(
+
+                );
             _carDal.Add(entity);
             return new SuccessResult(Messages.CarAdded);
         }
@@ -52,5 +59,6 @@ namespace Business.Concrete
             _carDal.Update(entity);
             return new SuccessResult(Messages.CarUpdated);
         }
+        
     }
 }

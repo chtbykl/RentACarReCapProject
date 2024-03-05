@@ -68,7 +68,7 @@ namespace ConsoleUI
             car1 = new Car
             {
                 
-                BrandId = 4,
+                
                 ColorId = 2,
                 DailyPrice = 100,
                 Description = "ewqwewqweqweqw",
@@ -78,7 +78,7 @@ namespace ConsoleUI
                 VehicleTypeId = 11
             };
             car2 = new Car { Id = 2 };
-            car3 = new Car { Id = 3, BrandId = 1, ColorId = 1, DailyPrice = 30, Description = "comfortable vehicle", FuelTypeId = 1, ModelId = 1, ModelYear = 2023, VehicleTypeId = 1 };
+            car3 = new Car { Id = 3, ColorId = 1, DailyPrice = 30, Description = "comfortable vehicle", FuelTypeId = 1, ModelId = 1, ModelYear = 2023, VehicleTypeId = 1 };
         }
     }
 }
