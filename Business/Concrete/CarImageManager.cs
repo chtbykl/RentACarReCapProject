@@ -97,7 +97,7 @@ namespace Business.Concrete
         private IDataResult<List<CarImage>> GetDefaultImage(int carId)
         {
             var defaultImages = new List<CarImage>() {
-                new CarImage() {Id = 0 ,CarId = carId, AddDate = DateTime.Now, ImagePath = "DefaulImagePath.jpg"}
+                new CarImage() {CarId = carId, AddDate = DateTime.Now, ImagePath = @"DefaulImagePath.jpg"}
             };
             return new SuccessDataResult<List<CarImage>>(defaultImages);
         }

@@ -101,5 +101,6 @@ namespace Business.Constants
 
         public static string MaxCarImageCount = "Bir aracın maximum 5 görseli olabilir.";
         public static string NoCarImage = "Aracın hiçbir görseli yok.";
+        public static string NoCar = "Böyle bir aracımız yok. başka bir araç seçiniz";
     }
 }

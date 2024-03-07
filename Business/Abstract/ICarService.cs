@@ -13,6 +13,7 @@ namespace Business.Abstract
     public interface ICarService
     {
         IDataResult<List<Car>> GetAll();
+        IDataResult<List<Car>> GetById(int Id);
         IResult Add(Car entity);
         IResult Update(Car entity);
         IResult Delete(Car entity);

@@ -25,10 +25,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand entity)
         {
-            if(entity.Name.Length <= 2)
-            {
-                return new ErrorResult(Messages.InvalidName);
-            }
+            
             _brandDal.Add(entity);
             return new SuccessResult(Messages.BrandAdded);
         }
@@ -49,5 +46,7 @@ namespace Business.Concrete
         {
             return new SuccessResult(Messages.BrandUpdated);
         }
+
+        
     }
 }
