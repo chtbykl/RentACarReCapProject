@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class CarImage:Entity
+    public class CarImage:BaseEntity<int>
     {
-        public int Id { get; set; }
+        
         public int CarId { get; set; }
         public string ImagePath { get; set; }
         

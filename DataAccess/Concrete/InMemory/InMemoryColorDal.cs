@@ -16,12 +16,12 @@ namespace DataAccess.Concrete.InMemory
         {
             _colors = new List<Color>()
             {
-                new Color{ColorId = 1 , Name = "Blue", ColorCode = "#0a32ff"},
-                new Color{ColorId = 2 , Name = "Red", ColorCode = "#ff0a0a"},
-                new Color{ColorId = 3 , Name = "Green", ColorCode = "#2aff0a"},
-                new Color{ColorId = 4 , Name = "Yellow", ColorCode = "#ffee0a"},
-                new Color{ColorId = 5 , Name = "White", ColorCode = "#ffffff"},
-                new Color{ColorId = 6 , Name = "Black", ColorCode = "#000000"},
+                new Color{Id = 1 , Name = "Blue", ColorCode = "#0a32ff"},
+                new Color{Id = 2 , Name = "Red", ColorCode = "#ff0a0a"},
+                new Color{Id = 3 , Name = "Green", ColorCode = "#2aff0a"},
+                new Color{Id = 4 , Name = "Yellow", ColorCode = "#ffee0a"},
+                new Color{Id = 5 , Name = "White", ColorCode = "#ffffff"},
+                new Color{Id = 6 , Name = "Black", ColorCode = "#000000"},
             };
         }
         public void Add(Color entity)

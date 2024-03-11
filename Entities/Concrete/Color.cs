@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Color:Entity
+    public class Color:BaseEntity<int>
     {
-        public int ColorId { get; set; }
+        
         public string Name { get; set; }
         public string ColorCode { get; set; }
     }

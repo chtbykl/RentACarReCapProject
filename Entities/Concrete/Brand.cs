@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Brand:Entity
+    public class Brand:BaseEntity<int>
     {
-        public int BrandId { get; set; }
+        
         public string Name { get; set; }
     }
 }

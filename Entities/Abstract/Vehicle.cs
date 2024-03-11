@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Abstract
 {
-    public abstract class Vehicle : Entity
+    public abstract class Vehicle : BaseEntity<int>
     {
-        public int Id { get; set; }
+       
         public int ModelId { get; set; }
         public int VehicleTypeId { get; set; }
         public int ColorId { get; set; }

@@ -22,11 +22,11 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var ModelDetails= from models in context.Models
                                    join brands in context.Brands
-                                   on models.BrandId equals brands.BrandId
+                                   on models.BrandId equals brands.Id
 
                                    select new ModelDetailDto
                                    {
-                                       ModelId = models.ModelId,
+                                       ModelId = models.Id,
                                        ModelName = models.Name,
                                        BrandName = brands.Name
                                    };
@@ -35,20 +35,20 @@ namespace DataAccess.Concrete.EntityFramework
                 var CarsDetails = from cars in context.Cars
 
                              join colors in context.Colors
-                             on cars.ColorId equals colors.ColorId
+                             on cars.ColorId equals colors.Id
 
                              join fuelTypes in context.FuelTypes
-                             on cars.FuelTypeId equals fuelTypes.FuelTypeId
+                             on cars.FuelTypeId equals fuelTypes.Id
 
-                             join models in ModelDetails
+                                  join models in ModelDetails
                              on cars.ModelId equals models.ModelId
 
                              join vehicleTypes in context.VehicleTypes
-                             on cars.VehicleTypeId equals vehicleTypes.VehicleTypeId
+                             on cars.VehicleTypeId equals vehicleTypes.Id
 
-                             
 
-                             select new VehicleDetailDto
+
+                                  select new VehicleDetailDto
                              {
                                  VehicleId = cars.Id,
                                  BrandName = models.BrandName,

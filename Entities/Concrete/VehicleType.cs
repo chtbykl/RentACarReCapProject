@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class VehicleType : Entity
+    public class VehicleType : BaseEntity<int>
     {
-        public int VehicleTypeId { get; set; }
+        
         public string Name { get; set; }
     }
 }
