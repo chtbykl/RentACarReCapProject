@@ -23,7 +23,7 @@ namespace ConsoleUI
             //test2();
 
 
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal(),new CarManager(new EfCarDal()));
 
             //Console.WriteLine( rentalManager.Add(
             //    new Rental 

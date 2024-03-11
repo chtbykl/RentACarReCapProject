@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Entities.Abstract
 {
-    public class Vehicle : IEntity
+    public abstract class Vehicle : Entity
     {
         public int Id { get; set; }
         public int ModelId { get; set; }

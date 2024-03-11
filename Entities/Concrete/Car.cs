@@ -1,5 +1,6 @@
 ﻿
 using Core.Entities;
+using Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Car:Vehicle, IEntity
+    public class Car:Vehicle
     {
         
         public int FuelTypeId { get; set; }

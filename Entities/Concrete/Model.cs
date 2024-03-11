@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Model:IEntity
+    public class Model:Entity
     {
         public int ModelId { get; set; }
         public int BrandId { get; set; }

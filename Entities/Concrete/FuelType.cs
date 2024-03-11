@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class FuelType : IEntity
+    public class FuelType : Entity
     {
         public int FuelTypeId { get; set; }
         public string Name { get; set; }

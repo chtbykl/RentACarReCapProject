@@ -32,6 +32,10 @@ namespace Business.Concrete
             var businessRule = BusinessRules.Run(
 
                 );
+            if (businessRule != null)
+            {
+                return businessRule;
+            }
             _carDal.Add(entity);
             return new SuccessResult(Messages.CarAdded);
         }
@@ -48,9 +52,16 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
         }
 
-        public IDataResult<List<Car>> GetById(int Id)
+        public IDataResult<Car> GetById(int Id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.Id == Id));
+            var businessRule = BusinessRules.Run(
+                CheckHaveTheVehicle(Id)
+                );
+            if (businessRule != null)
+            {
+                return new ErrorDataResult<Car>(businessRule.Message);
+            }
+            return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == Id),"Araç bulundu");
         }
 
         public IDataResult<List<VehicleDetailDto>> GetVehicleDetails()
@@ -64,6 +75,14 @@ namespace Business.Concrete
             _carDal.Update(entity);
             return new SuccessResult(Messages.CarUpdated);
         }
-        
+        private IDataResult<Car> CheckHaveTheVehicle(int carId)
+        {
+            if (_carDal.Get(p=>p.Id == carId) == null)
+            {
+                return new ErrorDataResult<Car>(Messages.NoCar);
+            }
+            return new SuccessDataResult<Car>();
+        }
+
     }
 }

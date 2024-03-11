@@ -84,7 +84,7 @@ namespace Business.Concrete
 
         private IResult CheckHaveTheVehicle(int carId)
         {
-            if (!_carService.GetById(carId).Data.Any())
+            if (_carService.GetById(carId).Data == null)
             {
                 return new ErrorResult(Messages.NoCar);
             }
