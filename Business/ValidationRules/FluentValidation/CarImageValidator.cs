@@ -13,7 +13,6 @@ namespace Business.ValidationRules.FluentValidation
         public CarImageValidator()
         {
             RuleFor(p=>p.CarId).NotEmpty();
-            RuleFor(p=>p.AddDate).NotEmpty();
             RuleFor(p => p.ImagePath).NotEmpty();
             RuleFor(p => p.ImagePath).MaximumLength(200);
         }
